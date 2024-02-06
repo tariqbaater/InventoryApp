@@ -4,6 +4,7 @@ import {
   loadData,
   loadWriteOff,
   loadHighValue,
+  loadMissingAvailiability,
 } from "./apiCalls.mjs";
 import {
   searchHistory,
@@ -110,6 +111,35 @@ export const highValueReport = () => {
         item.sales_qty,
         item.physical_qty,
         item.value,
+      ]);
+    }
+  });
+};
+
+// function to be called when missing availability button is clicked
+export const missingAvailiabilityReport = () => {
+  searchHistory.style.display = "none";
+  searchDiv3.style.display = "block";
+  printBtnDiv.style.display = "flex";
+  printBtnDiv.innerHTML = `
+    <div class="print-btn-container">
+     <a href="http://127.0.0.1:8080/missing_availability_csv" class="download-btn">
+        <button class="print-btn">
+          <i class="fa-solid fa-print"></i> Print Report
+        </button></a>
+    </div>
+`;
+  table.innerHTML = "";
+  const theaderRow = ["Item No", "Description", "Category", "VPE", "Stock"];
+  createThead(theaderRow);
+  loadMissingAvailiability().then((data) => {
+    for (const item of data) {
+      createRow([
+        item.ItemNo,
+        item.Description,
+        item.ItemCategory,
+        item.PcsPerCarton,
+        item.stock,
       ]);
     }
   });

@@ -29,3 +29,10 @@ export const loadHighValue = async () => {
   const data = await response.json();
   return data;
 };
+
+// read missing availiability data from db api
+export const loadMissingAvailiability = async () => {
+  const response = await fetch(`http://localhost:8080/missing_availability/`);
+  const data = await response.json();
+  return data;
+};

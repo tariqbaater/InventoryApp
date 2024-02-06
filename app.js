@@ -11,6 +11,7 @@ import {
   searchTable,
   writeOff,
   highValue,
+  missingAvailability,
 } from "./db.js";
 
 // initialize express
@@ -44,7 +45,7 @@ app.get("", (_req, res) => {
 app.use(express.json());
 
 // export csv file using json2csv
-app.get("/export", async (_req, res) => {
+app.get("/high_value_csv", async (_req, res) => {
   const loadHighValue = async () => {
     const response = await fetch(`http://localhost:8080/high_value/`);
     const data = await response.json();
@@ -59,6 +60,27 @@ app.get("/export", async (_req, res) => {
     res.send(csv);
   });
 });
+
+// get missing availability report
+app.get("/missing_availability_csv/", async (_req, res) => {
+  const loadMissingAvailiability = async () => {
+    const response = await fetch(`http://localhost:8080/missing_availability/`);
+    const data = await response.json();
+    return data;
+  };
+
+  loadMissingAvailiability().then((data) => {
+    const parser = new Parser();
+    const csv = parser.parse(data);
+    res.setHeader("Content-Type", "text/csv");
+    res.setHeader(
+      "Content-Disposition",
+      "attachment; filename=missing_availability.csv",
+    );
+    res.send(csv);
+  });
+});
+
 // get history procedure
 app.get("/history/:id", async (req, res) => {
   // check if id is an integer
@@ -101,6 +123,12 @@ app.get("/writeoff/", async (_req, res) => {
 // get high value products
 app.get("/high_value/", async (_req, res) => {
   const dukan = await highValue();
+  res.send(dukan[0]);
+});
+
+// get missing availability
+app.get("/missing_availability/", async (_req, res) => {
+  const dukan = await missingAvailability();
   res.send(dukan[0]);
 });
 

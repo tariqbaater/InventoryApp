@@ -5,6 +5,7 @@ import {
   whDeliveriesTableData,
   writeOff,
   highValueReport,
+  missingAvailiabilityReport,
 } from "./searchAllProducts.mjs";
 
 // *********** VARIABLES ***********
@@ -20,6 +21,7 @@ const itemHistoryBtn = document.querySelector("#item-history");
 const allProductsBtn = document.querySelector("#all-products");
 const writeOffBtn = document.querySelector("#write-off");
 const highValueBtn = document.querySelector("#high-value");
+const missingAvailiabilityBtn = document.querySelector("#missing-availability");
 export const printBtnDiv = document.querySelector(".print-btn-container");
 
 // *********** FUNCTIONS ***********
@@ -140,4 +142,9 @@ searchLiveBox.addEventListener("input", (event) => {
       row.style.display = "none";
     }
   });
+});
+
+// listen for missing availability button
+missingAvailiabilityBtn.addEventListener("click", () => {
+  missingAvailiabilityReport();
 });
