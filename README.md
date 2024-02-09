@@ -24,6 +24,8 @@ npm install --save nodemon
 
 ### Run
 
+It is dependant on your package.json file configuration.
+
 ```bash
 npm run start
 ```
