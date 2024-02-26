@@ -1,44 +1,28 @@
-import {
-  historyData,
-  deliveryData,
-  loadData,
-  loadWriteOff,
-  loadHighValue,
-  loadMissingAvailiability,
-} from "./apiCalls.mjs";
-import {
-  searchHistory,
-  searchDiv3,
-  table,
-  createThead,
-  searchHistBox,
-  createRow,
-  searchName,
-  printBtnDiv,
-} from "./index.mjs";
+import * as apiCallsMjs from "./apiCalls.mjs";
+import * as indexMjs from "./index.mjs";
 
 // *********** DATA FUNCTIONS ***********
 // function to be called when search/item history button is clicked
 export const itemHistoryTableData = () => {
-  searchHistory.style.display = "block";
-  searchDiv3.style.display = "none";
-  table.innerHTML = "";
+  indexMjs.searchHistory.style.display = "block";
+  indexMjs.searchDiv3.style.display = "none";
+  indexMjs.table.innerHTML = "";
   const theaderRow = ["Item No", "Description", "Qty", "Remarks"];
-  createThead(theaderRow);
-  historyData(searchHistBox.value).then((data) => {
+  indexMjs.createThead(theaderRow);
+  apiCallsMjs.historyData(indexMjs.searchHistBox.value).then((data) => {
     for (const item of data) {
-      createRow([item.ItemNo, item.Description, item.QtyPCs, item.Remarks]);
+      indexMjs.createRow([item.ItemNo, item.Description, item.QtyPCs, item.Remarks]);
     }
   });
 };
 // function to be called when search/wh deliveries button is clicked
 export const whDeliveriesTableData = () => {
-  table.innerHTML = "";
+  indexMjs.table.innerHTML = "";
   const theaderRow = ["Item No", "Description", "Qty", "Date"];
-  createThead(theaderRow);
-  deliveryData(searchHistBox.value).then((data) => {
+  indexMjs.createThead(theaderRow);
+  apiCallsMjs.deliveryData(indexMjs.searchHistBox.value).then((data) => {
     for (const item of data) {
-      createRow([
+      indexMjs.createRow([
         item.ItemNo,
         item.Description,
         item.QtyPCs,
@@ -49,28 +33,28 @@ export const whDeliveriesTableData = () => {
 };
 // function to be called when all products button is clicked
 export const searchAllProducts = () => {
-  searchHistory.style.display = "none";
-  searchDiv3.style.display = "block";
-  table.innerHTML = "";
+  indexMjs.searchHistory.style.display = "none";
+  indexMjs.searchDiv3.style.display = "block";
+  indexMjs.table.innerHTML = "";
   const theaderRow = ["Item No", "Description"];
-  createThead(theaderRow);
-  loadData(searchName.value).then((data) => {
+  indexMjs.createThead(theaderRow);
+  apiCallsMjs.loadData(indexMjs.searchName.value).then((data) => {
     for (const item of data) {
-      createRow([item.itemno, item.description]);
+      indexMjs.createRow([item.itemno, item.description]);
     }
   });
 };
 // function to be called when write off button is clicked
 export const writeOff = () => {
-  searchHistory.style.display = "none";
-  searchDiv3.style.display = "block";
-  printBtnDiv.style.display = "none";
-  table.innerHTML = "";
+  indexMjs.searchHistory.style.display = "none";
+  indexMjs.searchDiv3.style.display = "block";
+  indexMjs.printBtnDiv.style.display = "none";
+  indexMjs.table.innerHTML = "";
   const theaderRow = ["Item No", "Description", "Qty", "Totals"];
-  createThead(theaderRow);
-  loadWriteOff().then((data) => {
+  indexMjs.createThead(theaderRow);
+  apiCallsMjs.loadWriteOff().then((data) => {
     for (const item of data) {
-      createRow([item.ItemNo, item.Description, item.QtyPCs, item.TotalPrice]);
+      indexMjs.createRow([item.ItemNo, item.Description, item.QtyPCs, item.TotalPrice]);
       if (item.ItemNo === "TOTAL") {
         document.querySelector(".table-row").style.fontWeight = "700";
         document.querySelector(".table-row").style.fontSize = "18px";
@@ -81,10 +65,10 @@ export const writeOff = () => {
 };
 // function to be called when high value button is clicked
 export const highValueReport = () => {
-  searchHistory.style.display = "none";
-  searchDiv3.style.display = "block";
-  printBtnDiv.style.display = "flex";
-  table.innerHTML = "";
+  indexMjs.searchHistory.style.display = "none";
+  indexMjs.searchDiv3.style.display = "block";
+  indexMjs.printBtnDiv.style.display = "flex";
+  indexMjs.table.innerHTML = "";
   const theaderRow = [
     "Item No",
     "Description",
@@ -97,10 +81,10 @@ export const highValueReport = () => {
     "Physical",
     "Value",
   ];
-  createThead(theaderRow);
-  loadHighValue().then((data) => {
+  indexMjs.createThead(theaderRow);
+  apiCallsMjs.loadHighValue().then((data) => {
     for (const item of data) {
-      createRow([
+      indexMjs.createRow([
         item.itemno,
         item.description,
         item.opening_qty,
@@ -118,10 +102,10 @@ export const highValueReport = () => {
 
 // function to be called when missing availability button is clicked
 export const missingAvailiabilityReport = () => {
-  searchHistory.style.display = "none";
-  searchDiv3.style.display = "block";
-  printBtnDiv.style.display = "flex";
-  printBtnDiv.innerHTML = `
+  indexMjs.searchHistory.style.display = "none";
+  indexMjs.searchDiv3.style.display = "block";
+  indexMjs.printBtnDiv.style.display = "flex";
+  indexMjs.printBtnDiv.innerHTML = `
     <div class="print-btn-container">
      <a href="http://127.0.0.1:8080/missing_availability_csv" class="download-btn">
         <button class="print-btn">
@@ -129,12 +113,12 @@ export const missingAvailiabilityReport = () => {
         </button></a>
     </div>
 `;
-  table.innerHTML = "";
+  indexMjs.table.innerHTML = "";
   const theaderRow = ["Item No", "Description", "Category", "VPE", "Stock"];
-  createThead(theaderRow);
-  loadMissingAvailiability().then((data) => {
+  indexMjs.createThead(theaderRow);
+  apiCallsMjs.loadMissingAvailiability().then((data) => {
     for (const item of data) {
-      createRow([
+      indexMjs.createRow([
         item.ItemNo,
         item.Description,
         item.ItemCategory,
