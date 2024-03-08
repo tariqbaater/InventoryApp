@@ -5,14 +5,7 @@ import cors from "cors";
 import { Parser } from "json2csv";
 
 // imports from local files
-import {
-  readData,
-  dryDelivery,
-  searchTable,
-  writeOff,
-  highValue,
-  missingAvailability,
-} from "./db.js";
+import * as dbJs from "./db.js";
 
 // initialize express
 const app = express();
@@ -89,7 +82,7 @@ app.get("/history/:id", async (req, res) => {
     return;
   } else {
     const { id } = req.params;
-    const dukan = await readData(id);
+    const dukan = await dbJs.readData(id);
     res.send(dukan[0][0]);
   }
 });
@@ -102,7 +95,7 @@ app.get("/dry_delivery/:id", async (req, res) => {
     return;
   } else {
     const { id } = req.params;
-    const dukan = await dryDelivery(id);
+    const dukan = await dbJs.dryDelivery(id);
     res.send(dukan[0]);
   }
 });
@@ -110,25 +103,25 @@ app.get("/dry_delivery/:id", async (req, res) => {
 // search all products
 app.get("/search", async (req, res) => {
   const { q } = req.query;
-  const dukan = await searchTable(q);
+  const dukan = await dbJs.searchTable(q);
   res.send(dukan[0]);
 });
 
 // get writeoff totals
 app.get("/writeoff/", async (_req, res) => {
-  const dukan = await writeOff();
+  const dukan = await dbJs.writeOff();
   res.send(dukan[0][0]);
 });
 
 // get high value products
 app.get("/high_value/", async (_req, res) => {
-  const dukan = await highValue();
+  const dukan = await dbJs.highValue();
   res.send(dukan[0]);
 });
 
 // get missing availability
 app.get("/missing_availability/", async (_req, res) => {
-  const dukan = await missingAvailability();
+  const dukan = await dbJs.missingAvailability();
   res.send(dukan[0]);
 });
 
