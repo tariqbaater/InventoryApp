@@ -1,11 +1,12 @@
-# Dukan Inventory Management Application
+Dukan Inventory Management Application
+===================================================================
 
 Created with ❤️ by [Tariq Baater](https://github.com/tariqbaater)
 
 ## Description
 
-Dukan Inventory Management Application is a web application that i created to manage my store inventory, 
-it is a simple inventory management application that i created using Node.js, Express, and MySQL. 
+Dukan Inventory Management Application is a web application that i created to manage my store inventory,
+it is a simple inventory management application that i created using Node.js, Express, and MySQL.
 
 ## Getting Started
 
