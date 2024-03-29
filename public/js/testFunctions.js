@@ -38,14 +38,14 @@
 
 // get the keys of the first object in the array, which can be used to create the table heade
 export const loadHighValue = async () => {
-  const response = await fetch(`http://localhost:8080/high_value/`);
-  const data = await response.json();
-  return data;
+    const response = await fetch(`http://localhost:8080/high_value/`);
+    const data = await response.json();
+    return data;
 };
 
 export const getKeys = async (func) => {
-  const data = await func();
-  return Object.keys(data[0]);
+    const data = await func();
+    return Object.keys(data[0]);
 };
 
 console.log(await getKeys(loadHighValue));
