@@ -100,11 +100,29 @@ app.get("/dry_delivery/:id", async (req, res) => {
   }
 });
 
+// get dsd_delivery
+app.get("/dsd_delivery/:id", async (req, res) => {
+  // check if id is an integer
+  if (!Number.isInteger(parseInt(req.params.id))) {
+    res.status(400).send("Invalid item number");
+    return;
+  } else {
+    const { id } = req.params;
+    const dukan = await dbJs.dsdDelivery(id);
+    res.send(dukan[0]);
+  }
+});
 // search all products
 app.get("/search", async (req, res) => {
   const { q } = req.query;
   const dukan = await dbJs.searchTable(q);
   res.send(dukan[0]);
+});
+
+// get total sales
+app.get("/sales/", async (_req, res) => {
+  const dukan = await dbJs.wastePercentage();
+  res.send(dukan[0][0]);
 });
 
 // get writeoff totals

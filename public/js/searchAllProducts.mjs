@@ -11,7 +11,12 @@ export const itemHistoryTableData = () => {
   indexMjs.createThead(theaderRow);
   apiCallsMjs.historyData(indexMjs.searchHistBox.value).then((data) => {
     for (const item of data) {
-      indexMjs.createRow([item.ItemNo, item.Description, item.QtyPCs, item.Remarks]);
+      indexMjs.createRow([
+        item.ItemNo,
+        item.Description,
+        item.QtyPCs,
+        item.Remarks,
+      ]);
     }
   });
 };
@@ -31,6 +36,23 @@ export const whDeliveriesTableData = () => {
     }
   });
 };
+// function to be called when search/wh deliveries button is clicked
+export const dsdDeliveriesTableData = () => {
+  indexMjs.table.innerHTML = "";
+  const theaderRow = ["Item No", "Description", "Qty", "Date"];
+  indexMjs.createThead(theaderRow);
+  apiCallsMjs.dsdDelivery(indexMjs.searchHistBox.value).then((data) => {
+    for (const item of data) {
+      indexMjs.createRow([
+        item.ItemNo,
+        item.Description,
+        item.Qty,
+        item.Date.substring(0, 10),
+      ]);
+    }
+  });
+};
+
 // function to be called when all products button is clicked
 export const searchAllProducts = () => {
   indexMjs.searchHistory.style.display = "none";
@@ -44,6 +66,29 @@ export const searchAllProducts = () => {
     }
   });
 };
+
+// function to be called when dashboard button is clicked
+export const dashBoard = () => {
+  indexMjs.dashboard.style.display = "block";
+  indexMjs.salesDiv.innerHTML = "";
+  indexMjs.wastageDiv.innerHTML = "";
+  indexMjs.percentageDiv.innerHTML = "";
+  apiCallsMjs.loadWastePercentage().then((data) => {
+    const totalSalesdata = data.totalsales;
+    const totalWastage = data.totalwaste;
+    const percentage = data.percentage + "%";
+    const span = document.createElement("span");
+    const span2 = document.createElement("span");
+    const span3 = document.createElement("span");
+    span.innerHTML = totalSalesdata;
+    indexMjs.salesDiv.appendChild(span);
+    span2.innerHTML = totalWastage;
+    indexMjs.wastageDiv.appendChild(span2);
+    span3.innerHTML = percentage;
+    indexMjs.percentageDiv.appendChild(span3);
+  });
+};
+
 // function to be called when write off button is clicked
 export const writeOff = () => {
   indexMjs.searchHistory.style.display = "none";
@@ -54,7 +99,12 @@ export const writeOff = () => {
   indexMjs.createThead(theaderRow);
   apiCallsMjs.loadWriteOff().then((data) => {
     for (const item of data) {
-      indexMjs.createRow([item.ItemNo, item.Description, item.QtyPCs, item.TotalPrice]);
+      indexMjs.createRow([
+        item.ItemNo,
+        item.Description,
+        item.QtyPCs,
+        item.TotalPrice,
+      ]);
       if (item.ItemNo === "TOTAL") {
         document.querySelector(".table-row").style.fontWeight = "700";
         document.querySelector(".table-row").style.fontSize = "18px";
