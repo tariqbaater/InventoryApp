@@ -119,6 +119,12 @@ app.get("/search", async (req, res) => {
   res.send(dukan[0]);
 });
 
+// get top products
+app.get("/top_products/", async (_req, res) => {
+  const dukan = await dbJs.topProducts();
+  res.send(dukan[0]);
+});
+
 // get total sales
 app.get("/sales/", async (_req, res) => {
   const dukan = await dbJs.wastePercentage();

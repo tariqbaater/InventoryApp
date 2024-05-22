@@ -73,19 +73,24 @@ export const dashBoard = () => {
   indexMjs.salesDiv.innerHTML = "";
   indexMjs.wastageDiv.innerHTML = "";
   indexMjs.percentageDiv.innerHTML = "";
+  indexMjs.vsbudgetDiv.innerHTML = "";
   apiCallsMjs.loadWastePercentage().then((data) => {
     const totalSalesdata = data.totalsales;
     const totalWastage = data.totalwaste;
+    const vsBudget = data.vsbudget + "%";
     const percentage = data.percentage + "%";
     const span = document.createElement("span");
     const span2 = document.createElement("span");
     const span3 = document.createElement("span");
+    const span4 = document.createElement("span");
     span.innerHTML = totalSalesdata;
     indexMjs.salesDiv.appendChild(span);
     span2.innerHTML = totalWastage;
     indexMjs.wastageDiv.appendChild(span2);
     span3.innerHTML = percentage;
     indexMjs.percentageDiv.appendChild(span3);
+    span4.innerHTML = vsBudget;
+    indexMjs.vsbudgetDiv.appendChild(span4);
   });
 };
 

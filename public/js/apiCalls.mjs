@@ -26,6 +26,13 @@ export const loadData = async (query) => {
   return data;
 };
 
+// read top products data from db api
+export const loadTopProducts = async () => {
+  const response = await fetch(`http://localhost:8080/top_products/`);
+  const data = await response.json();
+  return data;
+};
+
 // read total sales data from db api
 export const loadWastePercentage = async () => {
   const response = await fetch(`http://localhost:8080/sales/`);

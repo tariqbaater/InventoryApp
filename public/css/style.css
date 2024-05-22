@@ -85,6 +85,17 @@ body {
   color: #fff;
 }
 
+.card:nth-child(4) {
+  background-color: #e85526;
+  color: #fff;
+}
+
+.card:nth-child(5) {
+  background-color: #007460;
+  color: #fff;
+  width: 193%;
+}
+
 .card-inner {
   display: flex;
   flex-direction: column;

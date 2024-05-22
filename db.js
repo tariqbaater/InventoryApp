@@ -11,9 +11,15 @@ const pool = mysql
   })
   .promise();
 
+export async function topProducts() {
+  const rows = await pool.query(
+    "select * from sales order by AmountVAT desc limit 10",
+  );
+  return rows;
+}
 export async function wastePercentage() {
   const rows = await pool.query(
-    "SELECT ROUND((totalwaste/totalsales)*100, 2) AS `percentage`, FORMAT(ROUND(totalwaste, 2), 0) AS `totalwaste`, FORMAT(ROUND(totalsales, 2), 0) AS totalsales FROM( SELECT ROUND(SUM(`total price`), 2) AS `totalwaste` FROM `write_off`) AS `totalwaste`, ( SELECT ROUND(SUM(`AmountVAT`), 2) AS `totalsales` FROM `sales`) AS `totalsales`",
+    "SELECT ROUND((totalwaste/totalsalesvat)*100, 2) AS `percentage`, FORMAT(ROUND(totalwaste, 2), 0) AS `totalwaste`, FORMAT(ROUND(totalsales, 2), 0) AS totalsales, FORMAT(ROUND(totalsalesvat, 2), 0) AS totalsalesvat, ROUND((totalsales/210108)*100, 0) AS `vsbudget` FROM ( SELECT ROUND(SUM(`total price`), 2) AS `totalwaste` FROM `write_off`) AS `totalwaste`, ( SELECT ROUND(SUM(`Amount`), 2) AS `totalsales` FROM `sales`) AS `totalsales`, ( SELECT ROUND(SUM(`AmountVAT`), 2) AS `totalsalesvat` FROM `sales`) AS `totalsalesvat`",
   );
   return rows;
 }

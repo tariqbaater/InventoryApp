@@ -9,6 +9,7 @@ export const dashboard = document.querySelector(".dashboard-container");
 export const salesDiv = document.querySelector("#sales-report");
 export const wastageDiv = document.querySelector("#wastage-report");
 export const percentageDiv = document.querySelector("#percentage-report");
+export const vsbudgetDiv = document.querySelector("#vs-budget");
 export const searchHistory = document.querySelector(".search-bar");
 export const searchDiv3 = document.querySelector(".search-bar3");
 export const searchName = document.querySelector(".search-name");
