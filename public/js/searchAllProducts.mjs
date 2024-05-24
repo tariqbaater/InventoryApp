@@ -75,21 +75,21 @@ export const dashBoard = () => {
   indexMjs.percentageDiv.innerHTML = "";
   indexMjs.vsbudgetDiv.innerHTML = "";
   indexMjs.salesBudgetDiv.innerHTML = "";
-<<<<<<< HEAD
-  indexMjs.inventoryDiv.innerHTML = "";
-=======
->>>>>>> parent of 8b5fd83 (added a new card for days since inventory)
+  indexMjs.inventoryDayDiv.innerHTML = "";
+  indexMjs.inventoryDayDiv.innerHTML = "";
   apiCallsMjs.loadWastePercentage().then((data) => {
     const totalSalesdata = data.totalsales;
     const totalWastage = data.totalwaste;
     const vsBudget = data.vsbudget + "%";
     const percentage = data.percentage + "%";
     const salesBudget = data.totalsalesbudget;
+    const inventory = data.DaysSince;
     const span = document.createElement("span");
     const span2 = document.createElement("span");
     const span3 = document.createElement("span");
     const span4 = document.createElement("span");
     const span5 = document.createElement("span");
+    const span6 = document.createElement("span");
     span.innerHTML = totalSalesdata;
     indexMjs.salesDiv.appendChild(span);
     span2.innerHTML = totalWastage;
@@ -100,11 +100,10 @@ export const dashBoard = () => {
     indexMjs.vsbudgetDiv.appendChild(span4);
     span5.innerHTML = salesBudget;
     indexMjs.salesBudgetDiv.appendChild(span5);
-<<<<<<< HEAD
     span6.innerHTML = inventory;
-    indexMjs.inventoryDiv.appendChild(span6);
-=======
->>>>>>> parent of 8b5fd83 (added a new card for days since inventory)
+    indexMjs.inventoryDayDiv.appendChild(span6);
+    span6.innerHTML = inventory;
+    indexMjs.inventoryDayDiv.appendChild(span6);
   });
 };
 
