@@ -11,6 +11,7 @@ body {
   align-items: center;
   background-color: #007460;
   padding: 10px;
+  border-radius: 5px;
   color: white;
   animation: nav-loader 0.5s ease-in-out 1;
 }

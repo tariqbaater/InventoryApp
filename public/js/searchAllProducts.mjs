@@ -74,6 +74,7 @@ export const dashBoard = () => {
   indexMjs.wastageDiv.innerHTML = "";
   indexMjs.percentageDiv.innerHTML = "";
   indexMjs.vsbudgetDiv.innerHTML = "";
+  indexMjs.salesBudgetDiv.innerHTML = "";
   apiCallsMjs.loadWastePercentage().then((data) => {
     const totalSalesdata = data.totalsales;
     const totalWastage = data.totalwaste;
