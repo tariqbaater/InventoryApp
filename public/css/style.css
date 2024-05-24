@@ -103,6 +103,12 @@ body {
   align-items: center;
 }
 
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
 /* TODO: need to change the styling of search bar and search button using ids */
 #search-history {
   width: 22%;
