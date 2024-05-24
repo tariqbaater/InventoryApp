@@ -79,10 +79,12 @@ export const dashBoard = () => {
     const totalWastage = data.totalwaste;
     const vsBudget = data.vsbudget + "%";
     const percentage = data.percentage + "%";
+    const salesBudget = data.totalsalesbudget;
     const span = document.createElement("span");
     const span2 = document.createElement("span");
     const span3 = document.createElement("span");
     const span4 = document.createElement("span");
+    const span5 = document.createElement("span");
     span.innerHTML = totalSalesdata;
     indexMjs.salesDiv.appendChild(span);
     span2.innerHTML = totalWastage;
@@ -91,6 +93,8 @@ export const dashBoard = () => {
     indexMjs.percentageDiv.appendChild(span3);
     span4.innerHTML = vsBudget;
     indexMjs.vsbudgetDiv.appendChild(span4);
+    span5.innerHTML = salesBudget;
+    indexMjs.salesBudgetDiv.appendChild(span5);
   });
 };
 
@@ -98,7 +102,15 @@ export const dashBoard = () => {
 export const writeOff = () => {
   indexMjs.searchHistory.style.display = "none";
   indexMjs.searchDiv3.style.display = "block";
-  indexMjs.printBtnDiv.style.display = "none";
+  indexMjs.printBtnDiv.style.display = "flex";
+  indexMjs.printBtnDiv.innerHTML = `
+    <div class="print-btn-container">
+     <a href="http://127.0.0.1:8080/writeoff_csv" class="download-btn">
+        <button class="print-btn">
+          <i class="fa-solid fa-print"></i> Print Report
+        </button></a>
+    </div>
+`;
   indexMjs.table.innerHTML = "";
   const theaderRow = ["Item No", "Description", "Qty", "Totals"];
   indexMjs.createThead(theaderRow);

@@ -54,6 +54,23 @@ app.get("/high_value_csv", async (_req, res) => {
   });
 });
 
+//export csv file using json2csv
+app.get("/writeoff_csv", async (_req, res) => {
+  const loadWriteOff = async () => {
+    const response = await fetch(`http://localhost:8080/writeoff/`);
+    const data = await response.json();
+    return data;
+  };
+
+  loadWriteOff().then((data) => {
+    const parser = new Parser();
+    const csv = parser.parse(data);
+    res.setHeader("Content-Type", "text/csv");
+    res.setHeader("Content-Disposition", "attachment; filename=writeoff.csv");
+    res.send(csv);
+  });
+});
+
 // get missing availability report
 app.get("/missing_availability_csv/", async (_req, res) => {
   const loadMissingAvailiability = async () => {
