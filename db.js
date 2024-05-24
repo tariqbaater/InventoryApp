@@ -11,9 +11,27 @@ const pool = mysql
   })
   .promise();
 
-export async function topProducts() {
+export async function kvi() {
   const rows = await pool.query(
-    "select * from sales order by AmountVAT desc limit 10",
+    `
+WITH availability AS (SELECT
+count(k.ItemNo) as available
+from main_sheet ms
+join kvi k on ms.ItemNo = k.ItemNo
+where ms.physical_qty > 0
+order by k.ItemNo),
+
+kvi_count AS (SELECT count(k.ItemNo) as kvi_count from kvi k)
+
+SELECT
+ROUND((available/kvi_count) * 100, 0) as kvi_percentage
+FROM (
+SELECT
+*
+from availability
+join kvi_count on 1=1
+) AS subquery
+      `,
   );
   return rows;
 }

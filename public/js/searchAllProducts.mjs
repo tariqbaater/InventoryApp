@@ -76,20 +76,19 @@ export const dashBoard = () => {
   indexMjs.vsbudgetDiv.innerHTML = "";
   indexMjs.salesBudgetDiv.innerHTML = "";
   indexMjs.inventoryDayDiv.innerHTML = "";
-  indexMjs.inventoryDayDiv.innerHTML = "";
   apiCallsMjs.loadWastePercentage().then((data) => {
     const totalSalesdata = data.totalsales;
     const totalWastage = data.totalwaste;
     const vsBudget = data.vsbudget + "%";
     const percentage = data.percentage + "%";
     const salesBudget = data.totalsalesbudget;
-    const inventory = data.DaysSince;
+    // const inventory = data.DaysSince;
     const span = document.createElement("span");
     const span2 = document.createElement("span");
     const span3 = document.createElement("span");
     const span4 = document.createElement("span");
     const span5 = document.createElement("span");
-    const span6 = document.createElement("span");
+    // const span6 = document.createElement("span");
     span.innerHTML = totalSalesdata;
     indexMjs.salesDiv.appendChild(span);
     span2.innerHTML = totalWastage;
@@ -100,10 +99,14 @@ export const dashBoard = () => {
     indexMjs.vsbudgetDiv.appendChild(span4);
     span5.innerHTML = salesBudget;
     indexMjs.salesBudgetDiv.appendChild(span5);
-    span6.innerHTML = inventory;
-    indexMjs.inventoryDayDiv.appendChild(span6);
-    span6.innerHTML = inventory;
-    indexMjs.inventoryDayDiv.appendChild(span6);
+    // span6.innerHTML = inventory;
+    // indexMjs.inventoryDayDiv.appendChild(span6);
+  });
+  apiCallsMjs.loadKvi().then((data) => {
+    const kvi = data.kvi_percentage + "%";
+    const span = document.createElement("span");
+    span.innerHTML = kvi;
+    indexMjs.inventoryDayDiv.appendChild(span);
   });
 };
 

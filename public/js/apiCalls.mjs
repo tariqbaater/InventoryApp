@@ -27,8 +27,8 @@ export const loadData = async (query) => {
 };
 
 // read top products data from db api
-export const loadTopProducts = async () => {
-  const response = await fetch(`http://localhost:8080/top_products/`);
+export const loadKvi = async () => {
+  const response = await fetch(`http://localhost:8080/kvi/`);
   const data = await response.json();
   return data;
 };

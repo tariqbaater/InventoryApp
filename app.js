@@ -137,9 +137,9 @@ app.get("/search", async (req, res) => {
 });
 
 // get top products
-app.get("/top_products/", async (_req, res) => {
-  const dukan = await dbJs.topProducts();
-  res.send(dukan[0]);
+app.get("/kvi/", async (_req, res) => {
+  const dukan = await dbJs.kvi();
+  res.send(dukan[0][0]);
 });
 
 // get total sales
