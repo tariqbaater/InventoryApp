@@ -75,7 +75,7 @@ export const dashBoard = () => {
   indexMjs.percentageDiv.innerHTML = "";
   indexMjs.vsbudgetDiv.innerHTML = "";
   indexMjs.salesBudgetDiv.innerHTML = "";
-  indexMjs.inventoryDayDiv.innerHTML = "";
+  indexMjs.inventoryDiv.innerHTML = "";
   apiCallsMjs.loadWastePercentage().then((data) => {
     const totalSalesdata = data.totalsales;
     const totalWastage = data.totalwaste;
@@ -100,7 +100,7 @@ export const dashBoard = () => {
     span5.innerHTML = salesBudget;
     indexMjs.salesBudgetDiv.appendChild(span5);
     span6.innerHTML = inventory;
-    indexMjs.inventoryDayDiv.appendChild(span6);
+    indexMjs.inventoryDiv.appendChild(span6);
   });
 };
 
