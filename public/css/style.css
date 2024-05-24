@@ -44,9 +44,7 @@ body {
 .main-title {
   display: flex;
   justify-content: center;
-  margin-top: 10px;
-  font-size: 10px;
-  font-weight: bold;
+  margin-top: 20px;
 }
 
 .main-cards {
@@ -57,19 +55,14 @@ body {
 }
 
 /* span cards styling */
-
 .card span {
   font-size: 55px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.card p {
-  font-size: 25px;
-}
-
 .card {
   display: flex;
-  height: 200px;
+  height: 250px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -82,37 +75,27 @@ body {
 .card:first-child {
   background-color: #007460;
   color: #fff;
-  animation: card-loader 1s ease-in-out 1;
 }
 
 .card:nth-child(2) {
   background-color: #e85526;
   color: #fff;
-  animation: card-loader 1.5s ease-in-out 1;
 }
 
 .card:nth-child(3) {
   background-color: #007460;
   color: #fff;
-  animation: card-loader 2s ease-in-out 1;
 }
 
 .card:nth-child(4) {
   background-color: #e85526;
   color: #fff;
-  animation: card-loader 2.5s ease-in-out 1;
 }
 
 .card:nth-child(5) {
   background-color: #007460;
   color: #fff;
-  animation: card-loader 3s ease-in-out 1;
-}
-
-.card:nth-child(6) {
-  background-color: #e85526;
-  color: #fff;
-  animation: card-loader 3.5s ease-in-out 1;
+  width: 193%;
 }
 
 .card-inner {
@@ -251,27 +234,6 @@ td {
 
 table {
   width: 100%;
-}
-
-/* *********** ANIMATIONS *********** */
-@keyframes icon-loader {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes card-loader {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
 }
 
 @keyframes nav-loader {
