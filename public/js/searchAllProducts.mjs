@@ -78,7 +78,7 @@ export const dashBoard = () => {
   indexMjs.inventoryDayDiv.innerHTML = "";
   apiCallsMjs.loadWastePercentage().then((data) => {
     const totalSalesdata = data.totalsales;
-    const totalWastage = data.totalwaste;
+    const averageSales = data.Avg_Sales;
     const vsBudget = data.vsbudget + "%";
     const percentage = data.percentage + "%";
     const salesBudget = data.totalsalesbudget;
@@ -91,7 +91,7 @@ export const dashBoard = () => {
     // const span6 = document.createElement("span");
     span.innerHTML = totalSalesdata;
     indexMjs.salesDiv.appendChild(span);
-    span2.innerHTML = totalWastage;
+    span2.innerHTML = averageSales;
     indexMjs.wastageDiv.appendChild(span2);
     span3.innerHTML = percentage;
     indexMjs.percentageDiv.appendChild(span3);
