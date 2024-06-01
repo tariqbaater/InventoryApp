@@ -63,6 +63,14 @@ export async function dsdDelivery(item) {
   return rows;
 }
 
+export async function salesHistory(item) {
+  const rows = await pool.query(
+    `SELECT ItemNo, Description, Qty, Amount, Date FROM daily_sales WHERE ItemNo = ?`,
+    [item],
+  );
+  return rows;
+}
+
 export async function mainSheet() {
   const rows = await pool.query(`SELECT * FROM main_sheet;`);
   return rows;
