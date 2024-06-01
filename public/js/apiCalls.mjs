@@ -19,6 +19,13 @@ export const dsdDelivery = async (id) => {
   return data;
 };
 
+// read sales history data from db api
+export const salesHistory = async (id) => {
+  const response = await fetch(`http://172.20.10.4:8888/sales_history/${id}`);
+  const data = await response.json();
+  return data;
+};
+
 // read search data from db api
 export const loadData = async (query) => {
   const response = await fetch(`http://172.20.10.4:8888/search?q=${query}`);

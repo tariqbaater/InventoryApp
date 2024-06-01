@@ -2,6 +2,10 @@
 import * as searchAllProductsMjs from "./searchAllProducts.mjs";
 
 // *********** VARIABLES ***********
+const modal = document.querySelector("#modal-container");
+const loginBtn = document.querySelector("#login-button");
+const logOutBtn = document.querySelector("#logout-button");
+const navbar = document.querySelector(".navbar");
 export const table = document.querySelector(".table");
 export const searchHistBox = document.querySelector("#search-history");
 const searchHistBtn = document.querySelector(".search-button");
@@ -18,6 +22,7 @@ export const searchName = document.querySelector(".search-name");
 const searchLiveBox = document.querySelector(".search-live");
 const whDeliveriesBtn = document.querySelector("#wh-deliveries");
 const dsdDeliveriesBtn = document.querySelector("#dsd-deliveries");
+const salesHistoryBtn = document.querySelector("#sales-history");
 const dashboardBtn = document.querySelector("#dashboard");
 const itemHistoryBtn = document.querySelector("#item-history");
 const allProductsBtn = document.querySelector("#all-products");
@@ -65,13 +70,41 @@ export const createRow = (rowData) => {
 
 //*********** EVENT LISTENERS *************
 window.onload = () => {
-  dashboard.style.display = "block";
+  navbar.style.display = "none";
+  dashboard.style.display = "none";
   printBtnDiv.style.display = "none";
   searchDiv3.style.display = "none";
   searchHistory.style.display = "none";
   table.innerHTML = "";
-  searchAllProductsMjs.dashBoard();
+  // check if user is logged in
+  if (localStorage.getItem("loggedIn") === "true") {
+    navbar.style.display = "block";
+    modal.style.display = "none";
+    searchAllProductsMjs.dashBoard();
+  } else {
+    modal.style.display = "block";
+  }
 };
+
+// listen for login button
+loginBtn.addEventListener("click", () => {
+  // check if credentials are correct then set local storage to true
+  if (
+    document.querySelector("#username").value === "admin" &&
+    document.querySelector("#password").value === "admin"
+  ) {
+    localStorage.setItem("loggedIn", true);
+    window.location.reload();
+    modal.style.display = "none";
+  }
+});
+
+// listen for logout button
+logOutBtn.addEventListener("click", () => {
+  localStorage.setItem("loggedIn", false);
+  window.location.reload();
+});
+
 // listen for the all products button to load all products
 allProductsBtn.addEventListener("click", () => {
   searchHistory.style.display = "none";
@@ -142,6 +175,18 @@ dsdDeliveriesBtn.addEventListener("click", () => {
   table.innerHTML = "";
   if (searchHistBox.value.length > 0) {
     searchAllProductsMjs.dsdDeliveriesTableData(searchHistBox.value);
+  } else {
+    alert("Please enter an item number");
+  }
+});
+
+// listen for sales history button
+salesHistoryBtn.addEventListener("click", () => {
+  searchHistory.style.display = "block";
+  dashboard.style.display = "none";
+  table.innerHTML = "";
+  if (searchHistBox.value.length > 0) {
+    searchAllProductsMjs.salesHistoryTableData(searchHistBox.value);
   } else {
     alert("Please enter an item number");
   }
