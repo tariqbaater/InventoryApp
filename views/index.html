@@ -28,6 +28,22 @@
       referrerpolicy="no-referrer"
     ></script>
   </head>
+  <!-- login modal -->
+  <div id="modal-container">
+    <div id="modal">
+      <div id="login-form">
+        <form>
+          <div class="form-group">
+            <label class="label" for="username">Username</label>
+            <input type="text" id="username" />
+            <label class="label" for="password">Password</label>
+            <input type="password" id="password" />
+            <input id="login-button" type="submit" value="Login" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
   <!-- navigation bar -->
   <div class="navbar">
     <nav>
@@ -52,8 +68,9 @@
           High Value
         </button>
         <button id="missing-availability" class="navbar-button" type="button">
-          Missing Availability
+          Availability
         </button>
+        <button id="logout-button">Logout</button>
       </div>
     </nav>
   </div>
@@ -127,6 +144,9 @@
     <button class="navbar-button" type="button" id="dsd-deliveries">
       DSD Deliveries
     </button>
+    <button class="navbar-button" type="button" id="sales-history">
+      Sales History
+    </button>
   </div>
   <div class="search-bar2">
     <input
@@ -166,7 +186,5 @@
       crossorigin="anonymous"
       defer
     ></script>
-    <!-- apex -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.49.1/apexcharts.min.js"></script> -->
   </body>
 </html>
