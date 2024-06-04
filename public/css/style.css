@@ -17,15 +17,15 @@ body {
 /* } */
 
 #modal {
-  background-color: lightgray;
+  background-color: #007460;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 350px;
-  height: 300px;
+  height: 350px;
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 1.5rem;
   display: flex;
   justify-content: space-between;
@@ -48,7 +48,7 @@ body {
   height: 100%;
   z-index: 1;
   /*  make it on top */
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .form-group {
@@ -63,14 +63,15 @@ body {
 
 .label {
   font-size: 1.5rem;
+  padding: 10px 10px;
   margin: 10px 10px;
-  color: #000;
+  color: #fff;
 }
 
 #username,
 #password {
   width: 80%;
-  height: 50px;
+  height: 30px;
   padding: 10px 10px;
   font-size: 1.5rem;
   /* background: transparent; */
@@ -83,11 +84,11 @@ body {
 #login-button {
   width: 50%;
   height: 50px;
-  margin-top: 10px;
+  margin-top: 30px;
   padding: 10px 10px;
   font-size: 1.5rem;
   background: transparent;
-  color: #000;
+  color: #fff;
   border: 2px solid #fff;
   border-radius: 10px;
   padding: 5px;
@@ -96,9 +97,9 @@ body {
   cursor: pointer;
 }
 
-#button:hover {
-  background: #fff;
-  color: #000;
+#login-button:hover {
+  background: #e85526;
+  color: #fff;
 }
 
 /* #########################
@@ -111,6 +112,13 @@ body {
   width: 150px;
 }
 
+.navbar-inline p {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+  color: white;
+}
+
 #logout-button {
   margin-left: 240px;
   border-radius: 5px;
@@ -118,13 +126,14 @@ body {
   background-color: #e85526;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   color: white;
-  font-size: 15px;
+  font-size: 12px;
   cursor: pointer;
 }
 
 #logout-button:hover {
   background-color: red;
   border: 1px solid #000;
+  font-weight: bold;
 }
 
 .navbar {
@@ -422,62 +431,6 @@ table {
 }
 
 @media only screen and (max-width: 500px) {
-  .main-cards {
-    grid-template-columns: 1fr;
-    margin: 0 10px;
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  .main-cards {
-    grid-template-columns: 1fr;
-    margin: 0 10px;
-  }
-}
-
-@media only screen and (max-width: 300px) {
-  .main-cards {
-    grid-template-columns: 1fr;
-    margin: 0 10px;
-  }
-}
-
-@media only screen and (max-width: 200px) {
-  .main-cards {
-    grid-template-columns: 1fr;
-    margin: 0 10px;
-  }
-}
-
-@media only screen and (max-width: 100px) {
-  .main-cards {
-    grid-template-columns: 1fr;
-    margin: 0 10px;
-  }
-}
-
-@media only screen and (max-width: 50px) {
-  .main-cards {
-    grid-template-columns: 1fr;
-    margin: 0 10px;
-  }
-}
-
-@media only screen and (max-width: 30px) {
-  .main-cards {
-    grid-template-columns: 1fr;
-    margin: 0 10px;
-  }
-}
-
-@media only screen and (max-width: 20px) {
-  .main-cards {
-    grid-template-columns: 1fr;
-    margin: 0 10px;
-  }
-}
-
-@media only screen and (max-width: 10px) {
   .main-cards {
     grid-template-columns: 1fr;
     margin: 0 10px;

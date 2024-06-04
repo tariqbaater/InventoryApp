@@ -73,11 +73,11 @@ export const searchAllProducts = () => {
   indexMjs.searchHistory.style.display = "none";
   indexMjs.searchDiv3.style.display = "block";
   indexMjs.table.innerHTML = "";
-  const theaderRow = ["Item No", "Description"];
+  const theaderRow = ["Item No", "Description", "Barcode"];
   indexMjs.createThead(theaderRow);
   apiCallsMjs.loadData(indexMjs.searchName.value).then((data) => {
     for (const item of data) {
-      indexMjs.createRow([item.itemno, item.description]);
+      indexMjs.createRow([item.itemno, item.description, item.barcode]);
     }
   });
 };

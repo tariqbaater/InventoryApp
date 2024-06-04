@@ -2,6 +2,7 @@
 import * as searchAllProductsMjs from "./searchAllProducts.mjs";
 
 // *********** VARIABLES ***********
+const docTitle = document.title;
 const modal = document.querySelector("#modal-container");
 const loginBtn = document.querySelector("#login-button");
 const logOutBtn = document.querySelector("#logout-button");
@@ -96,6 +97,8 @@ loginBtn.addEventListener("click", () => {
     localStorage.setItem("loggedIn", true);
     window.location.reload();
     modal.style.display = "none";
+  } else {
+    alert("Invalid credentials");
   }
 });
 
@@ -228,4 +231,12 @@ searchLiveBox.addEventListener("input", (event) => {
 missingAvailiabilityBtn.addEventListener("click", () => {
   dashboard.style.display = "none";
   searchAllProductsMjs.missingAvailiabilityReport();
+});
+
+// listen for tab change
+window.addEventListener("blur", () => {
+  document.title = "Come back!😁";
+});
+window.addEventListener("focus", () => {
+  document.title = docTitle;
 });
